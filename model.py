@@ -3,19 +3,19 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 import joblib
 
+# Load data
 df = pd.read_csv("diabetes_simplified.csv")
-
-# Use only 4 features
 X = df[['Glucose', 'BMI', 'Age', 'BloodPressure']]
 y = df['Outcome']
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
+# Train
 model = RandomForestClassifier()
-model.fit(X_train, y_train)
+model.fit(X, y)
 
-joblib.dump(model, "diabetes_model.pkl")
-print("✅ Model trained and saved with 4 features.")
+# Save model
+joblib.dump(model, "diabetes_model.pkl")   # ✅ Correct!
+print("Model saved successfully.")
+
 
 
 import streamlit as st
