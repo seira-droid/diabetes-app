@@ -83,5 +83,4 @@ st.markdown("""
 - Avoid smoking and excessive alcohol.
 - Get blood sugar checked regularly.
 """)
-
-
+remove unnecessary file
