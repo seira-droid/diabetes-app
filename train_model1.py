@@ -15,7 +15,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
 import joblib
 
-df = pd.read_csv("diabetes.csv")
+df = pd.read_csv("diabetes_simplified.csv")
 
 # Use only 4 features
 X = df[['Glucose', 'BMI', 'Age', 'BloodPressure']]
