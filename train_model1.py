@@ -1,15 +1,4 @@
-import pandas as pd
 
-# Load full dataset
-df = pd.read_csv("diabetes.csv")
-
-# Keep only selected features + target
-reduced_df = df[['Glucose', 'BMI', 'Age', 'BloodPressure', 'Outcome']]
-
-# Save new trimmed dataset
-reduced_df.to_csv("diabetes_simplified.csv", index=False)
-
-print("✅ Saved simplified dataset with only 4 features.")
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import RandomForestClassifier
