@@ -74,4 +74,27 @@ st.markdown("""
 - Avoid smoking and excessive alcohol.
 - Get blood sugar checked regularly.
 """)
+import streamlit as st
+import joblib
+
+# Load trained model
+model = joblib.load("diabetes_model.pkl")
+
+# UI for user input
+st.title("🩺 Simplified Diabetes Predictor")
+
+glucose = st.number_input("Glucose Level", min_value=0)
+bmi = st.number_input("BMI", min_value=0.0)
+age = st.number_input("Age", min_value=0)
+bp = st.number_input("Blood Pressure", min_value=0)
+
+# Predict button
+if st.button("Predict"):
+    input_data = [[glucose, bmi, age, bp]]
+    prediction = model.predict(input_data)[0]
+    
+    if prediction == 1:
+        st.error("⚠️ High risk of Diabetes")
+    else:
+        st.success("✅ Low risk of Diabetes")
 
