@@ -1,39 +1,3 @@
-import numpy as np
-import pandas as pd
-from matplotlib import pyplot as plt
-import seaborn as sn
-from sklearn.preprocessing import LabelEncoder
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import AdaBoostClassifier
-from sklearn.metrics import accuracy_score,confusion_matrix,classification_report
-import pickle
-
-url ="/content/drive/MyDrive/dataset/diabetes.csv"
-
-columns = ["Pregnancies", "Glucose", "BloodPressure", "SkinThickness", "Insulin",
-           "BMI", "DiabetesPedigreeFunction", "Age", "Outcome"]
-data = pd.read_csv(url, header=None, names=columns)
-
-
-
-
-data.shape
-data.dtypes
-data.isna().sum()
-x=data.drop(['Outcome'],axis=1)
-y=data['Outcome']
-x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=5)
-
-model=AdaBoostClassifier()
-model.fit(x_train,y_train)
-pred_y=model.predict(x_test)
-pred_y
-
-with open("diabetes_model", "wb") as f:
-    pickle.dump(model, f)
-
-print("✅ Model trained and saved with 8 features.")
-
 
 
 import streamlit as st
