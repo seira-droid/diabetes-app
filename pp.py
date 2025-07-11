@@ -2,7 +2,7 @@ import streamlit as st
 import joblib
 
 # Load model
-model = joblib.load("diabetes_simplified.csv")
+model = joblib.load("diabetes_model.pkl")
 
 st.title("🩺  Diabetes Risk Predictor")
 
