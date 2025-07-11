@@ -84,3 +84,26 @@ st.markdown("""
 - Get blood sugar checked regularly.
 """)
 remove unnecessary file
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier
+import joblib
+
+# STEP 1: Load and clean the dataset
+df = pd.read_csv("diabetes.csv")
+
+# Keep only selected columns
+df = df[['Glucose', 'BMI', 'Age', 'BloodPressure', 'Outcome']]  # Add 'Insulin' if needed
+
+# STEP 2: Split features and target
+X = df.drop("Outcome", axis=1)
+y = df["Outcome"]
+
+# STEP 3: Train the model
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+model = RandomForestClassifier()
+model.fit(X_train, y_train)
+
+# STEP 4: Save the model
+joblib.dump(model, "diabetes_model.pkl")
+print("✅ Model trained and saved as diabetes_model.pkl")
