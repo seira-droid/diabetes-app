@@ -67,10 +67,3 @@ st.markdown("""
 - Avoid smoking and excessive alcohol.
 - Get blood sugar checked regularly.
 """)
-import streamlit as st
-import joblib
-
-# Load trained model
-model = joblib.load("diabetes_model.pkl")
-
-# UI for user input
